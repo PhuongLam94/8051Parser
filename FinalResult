@@ -1,10 +1,10 @@
 bb
 		MOV
 					 A 
-					 R1 + 1 
+					 Option + 1 
 		MOV
 					 R7 
-					 R2 + 100 
+					 someFlag + 100 
 		SETB
 					 A 
 		CLR
@@ -14,12 +14,12 @@ bb
 					 cc 
 		MOV
 					 R7 
-					 R2 + 450 
+					 someFlag + 450 
 		SETB
-					 A 
+					 DR 
 cc
 		MOV
 					 R7 
-					 R2 + 450 
+					 someFlag + 450 
 		SETB
-					 A 
+					 DR 

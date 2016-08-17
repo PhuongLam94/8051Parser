@@ -56,9 +56,9 @@ const char *registers[rsize] = {
 std::map<char*,int> undefined;
 std::map<char *, char *> defined;
 void init_defined(){
-	defined["Option"] = "R1";
-	defined["someFlag"] = "R2";
-	defined["DRAB"] = "ACC.1";
+	//defined["Option"] = "R1";
+	//defined["someFlag"] = "R2";
+	//defined["DRAB"] = "ACC.1";
 }
 char * defined_value(char * name){
 	std::map<char *,char *>::iterator it;
@@ -340,8 +340,8 @@ void address_label(AssemblyProgram* &ass_program){
 	}
 }
 int main(int, char**) {
-	std::cout << "------START PARSING------\n";
-	handle("assembly2");
+	std::cout << "------START PARSING 22------\n";
+	handle("assembly22");
 	std::cout << "-----HANDLE BINARY EXPRESSION---\n";
 	init_defined();
 	handle_binary(ass_program);

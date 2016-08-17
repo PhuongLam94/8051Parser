@@ -50,6 +50,7 @@ char* startLabel;
 	AssemblyProgram *ass_program
 
 // define the constant-string tokens:
+%token DEFINE
 %token PUBLIC
 %token COMMENT
 %token END_LINE
@@ -76,11 +77,22 @@ char* startLabel;
 // 8051 Assembly Grammar 2015
 
 program:
+	defines body
+	|body
+	;
+body: 
 	PUBLIC ID labels { std::cout << "Start Label" << $2 << std::endl;
 						startLabel = $2;
 						ass_program->labelList = gl_labels;
 					}
-	;
+;
+defines:
+	defines define
+	|define
+;
+define:
+	DEFINE ID ID END_LINE { std::cout << "Define variable "<< $2 << " value " << $3 <<std::endl; }
+;
 labels:
 	labels label
 	|label
@@ -200,6 +212,20 @@ expressions:
 
 
 void handle(const char* file) {
+	/*FILE * pFile;
+	   char buffer [100];
+
+	   pFile = fopen (file , "r");
+	   if (pFile == NULL) perror ("Error opening file");
+	   else
+	   {
+	     while ( ! feof (pFile) )
+	     {
+	       if ( fgets (buffer , 100 , pFile) == NULL ) break;
+	       cout << buffer;
+	     }
+	     fclose (pFile);
+	   }*/
 	ass_program = new AssemblyProgram();
 	ass_program->name = "8051";
 	// open a file handle to a particular file:
@@ -208,6 +234,7 @@ void handle(const char* file) {
 	if (!myfile) {
 		cout << "I can't open a assembly file!" << endl;
 		return ;
+	} else {
 	}
 	// set flex to read from it instead of defaulting to STDIN:
 	yyin = myfile;

@@ -8,6 +8,7 @@ char *pEnd;
 %}
 %option noyywrap
 %%
+#DEFINE {return DEFINE;}
 [ \t] ;
 \$ {return END_OF_LINE;}
 \#	{return '#';}
