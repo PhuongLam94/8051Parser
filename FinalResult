@@ -1,25 +1,4 @@
 bb
-		MOV
-					 A 
-					 Option + 1 
-		MOV
-					 R7 
-					 someFlag + 100 
 		SETB
 					 A 
-		CLR
-					 P0 
-		JNB
-					 A 
-					 cc 
-		MOV
-					 R7 
-					 someFlag + 450 
-		SETB
-					 DR 
-cc
-		MOV
-					 R7 
-					 someFlag + 450 
-		SETB
-					 DR 
+		RET

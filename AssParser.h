@@ -22,7 +22,7 @@
 #include "AssemblyInfo.h"
 #include <cstring>
 
-#line 40 "AssParser.y"
+#line 41 "AssParser.y"
 typedef union {
 	int ival;
 	float fval;

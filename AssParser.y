@@ -27,6 +27,7 @@ list<AssemblyExpression*>  *gl_exps = new list<AssemblyExpression*>() ;
 list<AssemblyArgument*>  *gl_args = new list<AssemblyArgument*>() ;
 list<AssemblyLabel*>  *gl_labels = new list<AssemblyLabel*>();
 list<AssemblyLine*> *gl_lines = new list<AssemblyLine*>();
+list<AssemblyLine*> *defines = new list<AssemblyLine*>();
 AssemblyExpression* expr =  new AssemblyExpression();
 
 
@@ -91,7 +92,21 @@ defines:
 	|define
 ;
 define:
-	DEFINE ID ID END_LINE { std::cout << "Define variable "<< $2 << " value " << $3 <<std::endl; }
+	DEFINE ID expression END_LINE { std::cout << "Define variable "<< $2 <<std::endl;
+				AssemblyLine* line = new AssemblyLine();
+				line -> expList = new list<AssemblyExpression*>();
+				line->kind = INSTRUCTION;
+				line->name = "DEFINE";
+				AssemblyExpression* expr1 = new AssemblyExpression();
+				expr1 -> kind = UNARY;
+				Arg a;
+				a.c=$2;
+				expr1 -> argList.push_back(new AssemblyArgument(6, a));
+				line -> expList->push_back(expr1);
+				line->expList ->push_back(expr);//*/
+				expr = new AssemblyExpression();
+				defines->push_back(line);//*/
+				}
 ;
 labels:
 	labels label

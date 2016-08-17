@@ -341,7 +341,7 @@ void address_label(AssemblyProgram* &ass_program){
 }
 int main(int, char**) {
 	std::cout << "------START PARSING 22------\n";
-	handle("assembly22");
+	handle("TOSV.ASM");
 	std::cout << "-----HANDLE BINARY EXPRESSION---\n";
 	init_defined();
 	handle_binary(ass_program);
@@ -370,6 +370,17 @@ int main(int, char**) {
 		for(br = ass_program->bitReg.begin();br != ass_program->bitReg.end(); ++br){
 			std::cout <<  " REGISTER IS BIT PRESENTATOR " << (*br) << std::endl;
 		}
+	}
+	list<AssemblyLine*>::iterator di;
+	for(di = defines -> begin(); di != defines->end(); di++){
+		std::cout << (*di) -> expList -> size() <<endl;
+		AssemblyExpression* var1 = (*di) -> expList -> back();
+		(*di) -> expList -> pop_back();
+		std::cout << (*di) -> expList -> size() <<endl;
+		char* var2 = (*((*((*di) -> expList -> back())).argList.front())).value.c;
+		std::cout << "Defines variable " << var2 << " expression ";
+		print_arg(var1);
+		std::cout << endl;
 	}
 
 	return 0;
