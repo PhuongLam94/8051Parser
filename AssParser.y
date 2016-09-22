@@ -29,8 +29,8 @@ list<AssemblyLabel*>  *gl_labels = new list<AssemblyLabel*>();
 list<AssemblyLine*> *gl_lines = new list<AssemblyLine*>();
 list<AssemblyLine*> *defines = new list<AssemblyLine*>();
 AssemblyExpression* expr =  new AssemblyExpression();
-
-
+list<UnionDefine*>* unionDefine1 = new list<UnionDefine*>();
+map<char*, int>* bitVar = new map<char*, int>();
 void handle(); 
 void yyerror(const char *s);
 char* startLabel;
@@ -51,6 +51,10 @@ char* startLabel;
 	AssemblyProgram *ass_program
 
 // define the constant-string tokens:
+%token BEGINDEFINE
+%token ENDDEFINE
+%token DEFINEBYTE
+%token DEFINEBITS
 %token DEFINE
 %token PUBLIC
 %token COMMENT
@@ -66,12 +70,12 @@ char* startLabel;
 %token <ival> INT
 %token <fval> FLOAT
 %token <sval> STRING
-
 %type <ival> direct_value
 //%type <line> line component instruction
 //%type <exp> argument expressions
 %type <arg> literal
-
+%type <arg> bit
+%type <line> define
 %start program
 %%
 
@@ -88,11 +92,15 @@ body:
 					}
 ;
 defines:
-	defines define
-	|define
+	defines definetwo
+	| definetwo
+;
+definetwo: define2 | definebit
+;
+define2: define {defines->push_back($1);}
 ;
 define:
-	DEFINE ID expression END_LINE { std::cout << "Define variable "<< $2 <<std::endl;
+    DEFINE ID expressions END_LINE { std::cout << "Define variable "<< $2 <<std::endl;
 				AssemblyLine* line = new AssemblyLine();
 				line -> expList = new list<AssemblyExpression*>();
 				line->kind = INSTRUCTION;
@@ -105,8 +113,27 @@ define:
 				line -> expList->push_back(expr1);
 				line->expList ->push_back(expr);//*/
 				expr = new AssemblyExpression();
-				defines->push_back(line);//*/
+				$$=line;
 				}
+
+;
+definebit: BEGINDEFINE END_LINE DEFINEBYTE END_LINE define DEFINEBITS END_LINE defineeachbit defineeachbit
+ defineeachbit defineeachbit defineeachbit defineeachbit defineeachbit defineeachbit ENDDEFINE END_LINE
+{
+	UnionDefine* ut = new UnionDefine();
+ 	$5 -> expList -> pop_back();
+	ut->byteVar = $5 -> expList -> back() -> argList.back()->value.c;
+	ut->bitVar = bitVar;
+	unionDefine1 -> push_back(ut);
+	bitVar = new map<char*, int>();
+}
+;
+defineeachbit: DEFINE ID bit END_LINE {
+	std::string temp($3->value.c);
+	char c =  temp.at(temp.size()-1);
+	int num = c - '0';
+	(*bitVar)[$2] = num;
+}
 ;
 labels:
 	labels label
@@ -195,7 +222,9 @@ literal:
 					Arg a;
 					a.c = $1;
 					$$ = new AssemblyArgument(6,a);}
-	| ID '.' INT { std::cout << "BIT" << std::endl;
+	| bit {$$=$1;}
+;
+bit: ID '.' INT { std::cout << "BIT" << std::endl;
 					std::stringstream ss;
   					ss << $1 << '.' << $3;
   					std::string tmp = ss.str();

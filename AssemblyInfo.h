@@ -45,10 +45,16 @@ union Arg {
    char* c;
    bits bit;
 };
+class UnionDefine{
+public:
+	char* byteVar;
+	map<char*, int>* bitVar;
+};
 class AssemblyArgument{
 public:
 	ARGS_KIND kind;
-	Arg value;	
+    Arg value;
+    char* replacement;
 public:
 	AssemblyArgument(int i,Arg v){
 		kind = ARGS_KIND(i);

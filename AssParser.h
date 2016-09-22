@@ -205,21 +205,25 @@ typedef
 
 
  #line 169 "/usr/share/bison++/bison.h"
-#define	DEFINE	258
-#define	PUBLIC	259
-#define	COMMENT	260
-#define	END_LINE	261
-#define	END_OF_LINE	262
-#define	HECXA	263
-#define	OCTAL	264
-#define	BINARY	265
-#define	ID	266
-#define	COLON	267
-#define	COMMA	268
-#define	OPERATOR	269
-#define	INT	270
-#define	FLOAT	271
-#define	STRING	272
+#define	BEGINDEFINE	258
+#define	ENDDEFINE	259
+#define	DEFINEBYTE	260
+#define	DEFINEBITS	261
+#define	DEFINE	262
+#define	PUBLIC	263
+#define	COMMENT	264
+#define	END_LINE	265
+#define	END_OF_LINE	266
+#define	HECXA	267
+#define	OCTAL	268
+#define	BINARY	269
+#define	ID	270
+#define	COLON	271
+#define	COMMA	272
+#define	OPERATOR	273
+#define	INT	274
+#define	FLOAT	275
+#define	STRING	276
 
 
 #line 169 "/usr/share/bison++/bison.h"
@@ -268,6 +272,10 @@ public:
   /* static const int token ... */
   
  #line 212 "/usr/share/bison++/bison.h"
+static const int BEGINDEFINE;
+static const int ENDDEFINE;
+static const int DEFINEBYTE;
+static const int DEFINEBITS;
 static const int DEFINE;
 static const int PUBLIC;
 static const int COMMENT;
@@ -291,21 +299,25 @@ static const int STRING;
   enum YY_parse_ENUM_TOKEN { YY_parse_NULL_TOKEN=0
   
  #line 215 "/usr/share/bison++/bison.h"
-	,DEFINE=258
-	,PUBLIC=259
-	,COMMENT=260
-	,END_LINE=261
-	,END_OF_LINE=262
-	,HECXA=263
-	,OCTAL=264
-	,BINARY=265
-	,ID=266
-	,COLON=267
-	,COMMA=268
-	,OPERATOR=269
-	,INT=270
-	,FLOAT=271
-	,STRING=272
+	,BEGINDEFINE=258
+	,ENDDEFINE=259
+	,DEFINEBYTE=260
+	,DEFINEBITS=261
+	,DEFINE=262
+	,PUBLIC=263
+	,COMMENT=264
+	,END_LINE=265
+	,END_OF_LINE=266
+	,HECXA=267
+	,OCTAL=268
+	,BINARY=269
+	,ID=270
+	,COLON=271
+	,COMMA=272
+	,OPERATOR=273
+	,INT=274
+	,FLOAT=275
+	,STRING=276
 
 
 #line 215 "/usr/share/bison++/bison.h"

@@ -9,6 +9,10 @@ char *pEnd;
 %option noyywrap
 %%
 #DEFINE {return DEFINE;}
+(\;BEGIN) {return BEGINDEFINE;}
+"\;DEFINE BYTE" {return DEFINEBYTE;}
+"\;DEFINE BITS" {return DEFINEBITS;}
+"\;END DEFINE" {return ENDDEFINE;}
 [ \t] ;
 \$ {return END_OF_LINE;}
 \#	{return '#';}
@@ -19,7 +23,24 @@ char *pEnd;
 [0-1]+[bB]	{yylval.ival = strtoull(yytext, &pEnd, 2);return BINARY;}
 (PUBLIC|public) {return PUBLIC;}
 \n        { return END_LINE; }
-(\;.*)           { return COMMENT; }
+(\;.*)           { 
+	string beginDefine = ";BEGIN DEFINE";
+	string endDefine = ";END DEFINE";
+	string defineByte = ";DEFINE BYTE";
+	string defineBits = ";DEFINE BITS";
+	string val = strdup(yytext);
+	if (beginDefine== val.substr(0, beginDefine.length()))
+		return BEGINDEFINE;
+	else if (endDefine== val.substr(0, endDefine.length()))
+		return ENDDEFINE;
+	else if (defineByte== val.substr(0, defineByte.length()))
+		return DEFINEBYTE;
+	else if (defineBits== val.substr(0, defineBits.length()))
+		return DEFINEBITS;
+	else return COMMENT;
+	
+
+}
 [A-Za-z_][A-Za-z_$0-9]*  {yylval.sval=strdup(yytext);return ID;}
 \:			{return COLON;}
 \,			{return COMMA;}

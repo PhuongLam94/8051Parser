@@ -55,10 +55,28 @@ const char *registers[rsize] = {
 };
 std::map<char*,int> undefined;
 std::map<char *, char *> defined;
+void showUnionDefine(){
+	list<UnionDefine*>::iterator li;
+	for (li = unionDefine1->begin(); li!=unionDefine1->end(); li++){
+		UnionDefine* temp = (*li);
+		cout << "Byte var: " << temp -> byteVar <<endl;
+		cout << "Bit vars: "<<endl;
+		map<char*, int>::iterator mi;
+		for (mi = temp ->bitVar->begin(); mi != temp -> bitVar -> end(); mi++){
+			cout << (*mi).first << ": " << (*mi).second << endl;
+		}
+	}
+}
 void init_defined(){
-	//defined["Option"] = "R1";
-	//defined["someFlag"] = "R2";
-	//defined["DRAB"] = "ACC.1";
+    list<AssemblyLine*>::iterator di;
+    for(di = defines -> begin(); di != defines->end(); di++){
+        AssemblyExpression* var1 = (*di) -> expList -> back();
+        (*di) -> expList -> pop_back();
+        char* var2 = (*((*((*di) -> expList -> back())).argList.front())).value.c;
+        defined[var2] = (var1 ->argList.front())->value.c;
+        std::cout << endl;
+    }
+
 }
 char * defined_value(char * name){
 	std::map<char *,char *>::iterator it;
@@ -102,7 +120,10 @@ void print_arg(AssemblyExpression *expr){
 				case IMMEDIATE_ID:
 				case 6:
 				case INDIRECT:
-					std::cout << (*ai)->value.c << " ";
+                    if ((*ai)->replacement)
+                        std::cout<<(*ai)->value.c<<" ("<<(*ai)->replacement<<") ";
+                    else
+                        std::cout << (*ai)->value.c << " ";
 					myfile << (*ai)->value.c << " ";
 					break;
 				case DIRECT_FLOAT:
@@ -115,7 +136,11 @@ void print_arg(AssemblyExpression *expr){
 					myfile << (*ai)->value.i << " ";
 					break;
 				case 8:
-					std::cout << (*ai)->value.c  << " ";
+                    //std::cout<<"Bit..."<<endl;
+                    if ((*ai)->replacement)
+                        std::cout<<(*ai)->value.c<<" ("<<(*ai)->replacement<<") ";
+                    else
+                        std::cout << (*ai)->value.c  << " ";
 					myfile << (*ai)->value.c  << " ";
 					break;
 				default:
@@ -268,9 +293,12 @@ void handle_binary(AssemblyProgram* &ass_program){
 								case 5: //IMMEDIATE ID
 								case 6: // ID
 									if(!if_exist((*ai)->value.c,registers,rsize)){
+                                        char * replacement = (*ai)->value.c;
 										char * n = defined_value((*ai)->value.c);
-										if (n)
+                                        if (n){
 											(*ai)->value.c = n;
+                                            (*ai)->replacement = replacement;
+                                        }
 									}
 									break;
 								default:
@@ -300,7 +328,9 @@ void handle_bit(AssemblyProgram* &ass_program){
 							AssemblyArgument* temp_arg = temp_expr->argList.front();
 							switch(temp_arg->kind){
 								case 6: //ID
-									temp_arg->change(8,temp_arg->value);
+                                    //cout<<temp_arg->value.c<<endl;
+                                    temp_arg->change(8,temp_arg->value);
+                                    //cout<<temp_arg->value.c<<endl;
 									break;
 								default:
 									break;
@@ -341,13 +371,14 @@ void address_label(AssemblyProgram* &ass_program){
 }
 int main(int, char**) {
 	std::cout << "------START PARSING 22------\n";
-	handle("TOSV.ASM");
+    handle("TOSV.ASM");
 	std::cout << "-----HANDLE BINARY EXPRESSION---\n";
 	init_defined();
-	handle_binary(ass_program);
+    handle_binary(ass_program);
 
 	std::cout << "-----HANDLE BIT ---\n";
 	handle_bit(ass_program);
+    //print_ass(ass_program);
 
 	std::cout << "-----APPENDING JUMP AND BRANCH STATEMENTS---\n";	
 	append_jumps(ass_program);
@@ -370,18 +401,7 @@ int main(int, char**) {
 		for(br = ass_program->bitReg.begin();br != ass_program->bitReg.end(); ++br){
 			std::cout <<  " REGISTER IS BIT PRESENTATOR " << (*br) << std::endl;
 		}
-	}
-	list<AssemblyLine*>::iterator di;
-	for(di = defines -> begin(); di != defines->end(); di++){
-		std::cout << (*di) -> expList -> size() <<endl;
-		AssemblyExpression* var1 = (*di) -> expList -> back();
-		(*di) -> expList -> pop_back();
-		std::cout << (*di) -> expList -> size() <<endl;
-		char* var2 = (*((*((*di) -> expList -> back())).argList.front())).value.c;
-		std::cout << "Defines variable " << var2 << " expression ";
-		print_arg(var1);
-		std::cout << endl;
-	}
-
+    }
+	showUnionDefine();
 	return 0;
 }

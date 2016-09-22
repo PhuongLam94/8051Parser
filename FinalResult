@@ -1,4 +1,7 @@
 bb
 		SETB
 					 A 
+		MOV
+					 R1 
+					 9999 
 		RET
