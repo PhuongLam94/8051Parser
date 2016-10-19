@@ -29,7 +29,6 @@ list<AssemblyLabel*>  *gl_labels = new list<AssemblyLabel*>();
 list<AssemblyLine*> *gl_lines = new list<AssemblyLine*>();
 list<AssemblyLine*> *defines = new list<AssemblyLine*>();
 AssemblyExpression* expr =  new AssemblyExpression();
-list<UnionDefine*>* unionDefine1 = new list<UnionDefine*>();
 map<char*, int>* bitVar = new map<char*, int>();
 void handle(); 
 void yyerror(const char *s);
@@ -82,20 +81,21 @@ char* startLabel;
 // 8051 Assembly Grammar 2015
 
 program:
-	defines body
+	defines body {std::cout<<"TESTTTT "<<defines->size()<<std::endl;}
 	|body
 	;
 body: 
-	PUBLIC ID labels { std::cout << "Start Label" << $2 << std::endl;
-						startLabel = $2;
+	PUBLIC ID labels { startLabel = $2;
 						ass_program->labelList = gl_labels;
+				std::cout << "Start Label" << $2 << (gl_labels->size())<<std::endl;
+						
 					}
 ;
 defines:
 	defines definetwo
 	| definetwo
 ;
-definetwo: define2 | definebit
+definetwo: defineeachbit | define2
 ;
 define2: define {defines->push_back($1);}
 ;
@@ -117,22 +117,30 @@ define:
 				}
 
 ;
-definebit: BEGINDEFINE END_LINE DEFINEBYTE END_LINE define DEFINEBITS END_LINE defineeachbit defineeachbit
- defineeachbit defineeachbit defineeachbit defineeachbit defineeachbit defineeachbit ENDDEFINE END_LINE
-{
-	UnionDefine* ut = new UnionDefine();
- 	$5 -> expList -> pop_back();
-	ut->byteVar = $5 -> expList -> back() -> argList.back()->value.c;
-	ut->bitVar = bitVar;
-	unionDefine1 -> push_back(ut);
-	bitVar = new map<char*, int>();
-}
-;
+
 defineeachbit: DEFINE ID bit END_LINE {
 	std::string temp($3->value.c);
 	char c =  temp.at(temp.size()-1);
 	int num = c - '0';
 	(*bitVar)[$2] = num;
+	AssemblyLine* line = new AssemblyLine();
+	line -> expList = new list<AssemblyExpression*>();
+	line->kind = INSTRUCTION;
+	line->name = "DEFINE";
+	AssemblyExpression* expr1 = new AssemblyExpression();
+	expr1 -> kind = UNARY;
+	Arg a;
+	a.c=$2;
+	expr1 -> argList.push_back(new AssemblyArgument(6, a));
+	line -> expList->push_back(expr1);
+	expr = new AssemblyExpression();
+	expr -> kind = UNARY;
+	expr -> argList.push_back($3);
+	line->expList ->push_back(expr);//*/
+	expr = new AssemblyExpression();
+	defines->push_back(line);
+	
+	
 }
 ;
 labels:
@@ -159,19 +167,21 @@ lines:
 	;
 line:
 	component COMMENT END_LINE   
-	| component  END_LINE
+	| component  END_LINE 
 	;
 component:
 	instruction 
 	;
 instruction:
-	ID 		{   AssemblyLine* line = new AssemblyLine();
+	ID 		{   
+				AssemblyLine* line = new AssemblyLine();
 				line->kind = INSTRUCTION;
 				line->name = $1;
 				line->expList = gl_exps;
 				gl_lines->push_back(line);
 			    gl_exps = new list<AssemblyExpression*>();}
-	|ID arguments  { AssemblyLine* line = new AssemblyLine();
+	|ID arguments  { 
+				AssemblyLine* line = new AssemblyLine();
 				line->kind = INSTRUCTION;
 				line->name = $1;
 				line->expList = gl_exps;
@@ -282,7 +292,7 @@ void handle(const char* file) {
 	}
 	// set flex to read from it instead of defaulting to STDIN:
 	yyin = myfile;
-
+	
 	// parse through the input until there is no more:
 	do {
 		yyparse(ass_program);

@@ -1,7 +1,1465 @@
-bb
+ABCDEFG
+		MOV
+					 A 
+					 OPTIONS + 1 
+		JNB
+					 SMPDUP 
+					 NOP_K1ECROF 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOVX
+					 A 
+					 DPTR 
 		SETB
+					 ACC.5 
+		MOVX
+					 DPTR 
+					 A 
+		CLR
+					 CARB 
+		JB
+					 CARB 
+					 CHK_RACA_KPON 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		MOVX
+					 A 
+					 DPTR 
+		JNB
+					 ACC.5 
+					 CLRXXBRAC 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
 					 A 
 		MOV
-					 R1 
-					 9999 
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOVX
+					 A 
+					 DPTR 
+		JNB
+					 ACC.5 
+					 CLRXXBRAC 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 A 
+					 56 
+		JB
+					 ACC.6 
+					 TSMKHC 
+		MOV
+					 A 
+					 BTS 
+		JB
+					 MASTER 
+					 BPFUPFL 
+		MOV
+					 DPTR 
+					 SYSFLGMAP + 4 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 192 
+		MOV
+					 B 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 192 
+		ORL
+					 A 
+					 B 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 SIMP 
+					 BPFUPFL 
+		MOV
+					 DPTR 
+					 SYSFLGMAP + 4 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 192 
+		MOV
+					 B 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 192 
+		ORL
+					 A 
+					 B 
+		MOVX
+					 DPTR 
+					 A 
+		RET
+NOP_K1ECROF
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOVX
+					 A 
+					 DPTR 
+		SETB
+					 ACC.5 
+		MOVX
+					 DPTR 
+					 A 
+		CLR
+					 CARB 
+		JB
+					 CARB 
+					 CHK_RACA_KPON 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		MOVX
+					 A 
+					 DPTR 
+		JNB
+					 ACC.5 
+					 CLRXXBRAC 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOVX
+					 A 
+					 DPTR 
+		JNB
+					 ACC.5 
+					 CLRXXBRAC 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+TSMKHC
+		MOV
+					 A 
+					 BTS 
+		JB
+					 MASTER 
+					 BPFUPFL 
+		MOV
+					 DPTR 
+					 SYSFLGMAP + 4 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 192 
+		MOV
+					 B 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 192 
+		ORL
+					 A 
+					 B 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 SIMP 
+					 BPFUPFL 
+		MOV
+					 DPTR 
+					 SYSFLGMAP + 4 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 192 
+		MOV
+					 B 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 192 
+		ORL
+					 A 
+					 B 
+		MOVX
+					 DPTR 
+					 A 
+		RET
+BPFUPFL
+		MOV
+					 DPTR 
+					 SYSFLGMAP + 4 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 192 
+		MOV
+					 B 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 192 
+		ORL
+					 A 
+					 B 
+		MOVX
+					 DPTR 
+					 A 
+CLRBRAC
+		CLR
+					 CARB 
+		JB
+					 CARB 
+					 CHK_RACA_KPON 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		MOVX
+					 A 
+					 DPTR 
+		JNB
+					 ACC.5 
+					 CLRXXBRAC 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOVX
+					 A 
+					 DPTR 
+		JNB
+					 ACC.5 
+					 CLRXXBRAC 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+CHK_RACA_KPON
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		MOVX
+					 A 
+					 DPTR 
+		JNB
+					 ACC.5 
+					 CLRXXBRAC 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+CHKLFP
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 PMIS_CT 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 SIMP 
+					 TCNOPK 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 NNGOL2 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 NNGOL3 
+		MOVX
+					 A 
+					 DPTR 
+		SETB
+					 ACC.7 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JB
+					 CARB 
+					 NNGOL1 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.7 
+					 ULFPK 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 NNGOL5 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+PMIS_CT
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 SIMP 
+					 TCNOPK 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 NNGOL2 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 NNGOL3 
+		MOVX
+					 A 
+					 DPTR 
+		SETB
+					 ACC.7 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JB
+					 CARB 
+					 NNGOL1 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.7 
+					 ULFPK 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 NNGOL5 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+NNGOL1
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.7 
+					 ULFPK 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 NNGOL5 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+TCNOPK
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 NNGOL2 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 NNGOL3 
+		MOVX
+					 A 
+					 DPTR 
+		SETB
+					 ACC.7 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+NNGOL2
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 NNGOL3 
+		MOVX
+					 A 
+					 DPTR 
+		SETB
+					 ACC.7 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+NNGOL3
+		MOVX
+					 A 
+					 DPTR 
+		SETB
+					 ACC.7 
+RSTUFP
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		JB
+					 CARB 
+					 NNGRET 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 192 
+		MOV
+					 B 
+					 A 
+		MOV
+					 DPTR 
+					 SYSFLGMAP + 4 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 63 
+		ORL
+					 A 
+					 B 
+		MOVX
+					 DPTR 
+					 A 
+		SETB
+					 CARB 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 PMIS_CT 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 SIMP 
+					 TCNOPK 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 NNGOL2 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 NNGOL3 
+		MOVX
+					 A 
+					 DPTR 
+		SETB
+					 ACC.7 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JB
+					 CARB 
+					 NNGOL1 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.7 
+					 ULFPK 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 NNGOL5 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+ULFPK
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 NNGOL5 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+NNGOL5
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+ULF1
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG6 
+		MOVX
+					 A 
+					 DPTR 
+		SETB
+					 ACC.6 
+		CLR
+					 ACC.7 
+		MOVX
+					 DPTR 
+					 A 
+		JB
+					 CARB 
+					 NNGRET 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 192 
+		MOV
+					 B 
+					 A 
+		MOV
+					 DPTR 
+					 SYSFLGMAP + 4 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 63 
+		ORL
+					 A 
+					 B 
+		MOVX
+					 DPTR 
+					 A 
+		SETB
+					 CARB 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 PMIS_CT 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 SIMP 
+					 TCNOPK 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 NNGOL2 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 NNGOL3 
+		MOVX
+					 A 
+					 DPTR 
+		SETB
+					 ACC.7 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JB
+					 CARB 
+					 NNGOL1 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.7 
+					 ULFPK 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 NNGOL5 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+PKLOG6
+		MOVX
+					 A 
+					 DPTR 
+		SETB
+					 ACC.6 
+		CLR
+					 ACC.7 
+		MOVX
+					 DPTR 
+					 A 
+		JB
+					 CARB 
+					 NNGRET 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 192 
+		MOV
+					 B 
+					 A 
+		MOV
+					 DPTR 
+					 SYSFLGMAP + 4 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 63 
+		ORL
+					 A 
+					 B 
+		MOVX
+					 DPTR 
+					 A 
+		SETB
+					 CARB 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 PMIS_CT 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 SIMP 
+					 TCNOPK 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 NNGOL2 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 NNGOL3 
+		MOVX
+					 A 
+					 DPTR 
+		SETB
+					 ACC.7 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JB
+					 CARB 
+					 NNGOL1 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.7 
+					 ULFPK 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 NNGOL5 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+RSTLFP
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+PKLOG7
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+NNGOL4
+		JB
+					 CARB 
+					 NNGRET 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 192 
+		MOV
+					 B 
+					 A 
+		MOV
+					 DPTR 
+					 SYSFLGMAP + 4 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 63 
+		ORL
+					 A 
+					 B 
+		MOVX
+					 DPTR 
+					 A 
+		SETB
+					 CARB 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 PMIS_CT 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 SIMP 
+					 TCNOPK 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 NNGOL2 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 NNGOL3 
+		MOVX
+					 A 
+					 DPTR 
+		SETB
+					 ACC.7 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JB
+					 CARB 
+					 NNGOL1 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.7 
+					 ULFPK 
+		MOV
+					 DPTR 
+					 XROVLY + 20 
+		JNB
+					 CARB 
+					 NNGOL5 
+		MOVX
+					 A 
+					 DPTR 
+		JB
+					 ACC.5 
+					 RSTLFP 
+		MOV
+					 DPTR 
+					 XROVLY + 6 
+		JNB
+					 CARB 
+					 PKLOG7 
+		MOVX
+					 A 
+					 DPTR 
+		CLR
+					 ACC.7 
+		CLR
+					 ACC.6 
+		MOVX
+					 DPTR 
+					 A 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 20 
+NNGRET
+		MOV
+					 DPTR 
+					 SLVFLGMAP + 6 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 192 
+		MOV
+					 B 
+					 A 
+		MOV
+					 DPTR 
+					 SYSFLGMAP + 4 
+		MOVX
+					 A 
+					 DPTR 
+		ANL
+					 A 
+					 63 
+		ORL
+					 A 
+					 B 
+		MOVX
+					 DPTR 
+					 A 
+ENODXPDKP
 		RET
