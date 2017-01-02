@@ -95,10 +95,11 @@ defines:
 	defines definetwo
 	| definetwo
 ;
-definetwo: defineeachbit | define2
+definetwo: defineeachbit | define2 | comment
 ;
 define2: define {defines->push_back($1);}
 ;
+comment: COMMENT END_LINE;
 define:
     DEFINE ID expressions END_LINE { std::cout << "Define variable "<< $2 <<std::endl;
 				AssemblyLine* line = new AssemblyLine();
@@ -162,9 +163,10 @@ label:
 										gl_lines = new list<AssemblyLine*>();}
 	;	
 lines:
-	lines line 
-	|line 
+	lines line2 
+	|line2 
 	;
+line2: line | comment;
 line:
 	component COMMENT END_LINE   
 	| component  END_LINE 
